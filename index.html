@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Naz-k Vincent | Student Portfolio — COS 106</title>
+  <meta name="description" content="Student portfolio of Naz-k Vincent, built for COS 106 — Introduction to Web Technologies. Explore my biography, projects, study planner and contact details.">
+  <meta name="author" content="Naz-k Vincent">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- If JavaScript is switched off the menu cannot be toggled, so show the
+       links and hide the hamburger button instead of trapping them. -->
+  <noscript>
+    <style>
+      .nav-toggle { display: none; }
+      .primary-nav { display: block !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">AP</span>
+        <span class="brand-text">Academic Portfolio</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="projects.html">Projects</a></li>
+          <li><a class="nav-link" href="planner.html">Planner</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero: who this portfolio belongs to and what it is for -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">COS 106 · Student portfolio</p>
+          <h1 class="hero-title" id="hero-title">NAZ-K VINCENT<span class="dot">.</span></h1>
+          <p class="hero-role">Computer Science student &amp; aspiring web developer</p>
+          <p class="hero-lead">
+            Welcome to my academic portfolio. This is where I keep my coursework,
+            projects and study plans in one place while I learn how to design and
+            build for the web.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="projects.html">View my projects</a>
+            <a class="btn btn-ghost" href="contact.html">Get in touch</a>
+          </div>
+          <p class="hero-meta">
+            <span>Based in Port Harcourt, Nigeria</span>
+            <span class="hero-meta-item">Open to internships in 2027</span>
+          </p>
+        </div>
+
+        <article class="profile-card" aria-label="Profile summary">
+          <img class="profile-photo" src="images/my-profile.jpeg" alt="Portrait of Naz-k Vincent" width="1080" height="1920">
+          <div class="profile-body">
+            <p class="profile-name">Naz-k Vincent</p>
+            <p class="profile-role">BSc Computer Science · Level 100</p>
+            <dl class="profile-facts">
+              <div class="profile-fact">
+                <dt>Course</dt>
+                <dd>COS 106</dd>
+              </div>
+              <div class="profile-fact">
+                <dt>Semester</dt>
+                <dd>Second</dd>
+              </div>
+              <div class="profile-fact">
+                <dt>Year</dt>
+                <dd>2026</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Short biography plus the welcome audio -->
+    <section class="section" aria-labelledby="about-title">
+      <div class="container split">
+        <div class="bio">
+          <p class="section-label">About me</p>
+          <h2 class="section-title" id="about-title">A little about me</h2>
+          <p>
+            I am a second-year Computer Science student at MIVA Open UNIVERSITY,
+            with an interest in software development and building practical digital solutions.
+            Having explored backend development, I am currently expanding my skills in front-end development through HTML,
+            CSS and JavaScript in COS 106. I enjoy learning how things work, experimenting with ideas and turning them
+            into functional projects.
+          </p>
+          <p>
+            Outside of academics I enjoy swimming, drawing, and watching anime and movies. I am naturally curious and enjoy
+            exploring new ideas and technologies. This portfolio is one of the ways I put what I learnt into practice while documenting
+            my growth as a developer.
+          </p>
+          <ul class="tag-list" aria-label="Interests">
+            <li class="tag">HTML &amp; CSS</li>
+            <li class="tag">JavaScript</li>
+            <li class="tag">UI design</li>
+            <li class="tag">Accessibility</li>
+          </ul>
+        </div>
+
+        <article class="panel" aria-labelledby="audio-title">
+          <h3 class="panel-title" id="audio-title">A short welcome</h3>
+          <p>
+            Prefer listening? Here is a short audio introduction to this
+            portfolio and what I am studying this semester.
+          </p>
+          <audio class="audio-player" controls preload="metadata" src="media/welcome-intro.wav">
+            Your browser does not support the audio element.
+            <a href="media/welcome-intro.wav">Download the welcome audio</a> instead.
+          </audio>
+        </article>
+      </div>
+    </section>
+
+    <!-- Quick links to the other pages -->
+    <section class="section section-alt" aria-labelledby="explore-title">
+      <div class="container">
+        <p class="section-label">Explore</p>
+        <h2 class="section-title" id="explore-title">Where to go next</h2>
+        <p class="section-lead">
+          Four pages make up this portfolio. Some are still being built, so a
+          few links will lead to a “Coming soon” notice.
+        </p>
+
+        <div class="card-grid">
+          <a class="card" href="about.html">
+            <span class="card-index" aria-hidden="true">01</span>
+            <h3 class="card-title">About</h3>
+            <p class="card-text">My background, my goals and the skills I am building.</p>
+            <span class="card-arrow">Read more <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="card" href="projects.html">
+            <span class="card-index" aria-hidden="true">02</span>
+            <h3 class="card-title">Projects</h3>
+            <p class="card-text">Coursework and side projects, with short write-ups.</p>
+            <span class="card-arrow">See projects <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="card" href="planner.html">
+            <span class="card-index" aria-hidden="true">03</span>
+            <h3 class="card-title">Planner</h3>
+            <p class="card-text">A weekly study planner to keep the semester on track.</p>
+            <span class="card-arrow">Open planner <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="card" href="contact.html">
+            <span class="card-index" aria-hidden="true">04</span>
+            <h3 class="card-title">Contact</h3>
+            <p class="card-text">Email, GitHub and a simple way to get in touch.</p>
+            <span class="card-arrow">Say hello <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">© 2026 <strong>Naz-k Vincent</strong>. All rights reserved.</p>
+      <p class="footer-meta">COS 106 · Introduction to Web Technologies</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
