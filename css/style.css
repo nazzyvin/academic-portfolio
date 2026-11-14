@@ -17,7 +17,8 @@
      9. Placeholder pages
     10. About page
     11. Projects page
-    12. Keyframes and reduced motion
+    12. Contact page
+    13. Keyframes and reduced motion
    ========================================================================== */
 
 /* 1. Design tokens --------------------------------------------------------
@@ -729,7 +730,7 @@ code {
 
 /* 8. Footer -------------------------------------------------------------- */
 .site-footer {
-  padding-block: 2.25rem;
+  padding-block: 1.5rem;
   background: var(--ink);
   color: #c9cdf0;
 }
@@ -751,10 +752,48 @@ code {
   font-weight: 600;
 }
 
-.footer-meta {
-  color: #a9b0d0;
-  font-size: 0.8rem;
-  letter-spacing: 0.02em;
+/* Icon links. The row is a normal flex row, so the three tiles always sit
+   side by side no matter how wide the footer gets. */
+.footer-social {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each tile uses the form field's border recipe: 1px solid --line-strong
+   with the same 10px radius. --line-strong is a pale blue that reads on the
+   dark footer without turning into a bright white block.
+   2rem (32px) keeps the target comfortably above the 24px WCAG minimum. */
+.social-link {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  color: var(--line-strong);
+  transition: color 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Mirrors .field-input:focus — border goes bright and a 4px soft ring is
+   drawn with box-shadow. --accent-soft would glow far too hard on the dark
+   background, so the ring is the same pale blue at low alpha instead. */
+.social-link:hover,
+.social-link:focus-visible {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(201, 205, 240, 0.22);
+  color: #ffffff;
+}
+
+/* The shared :focus-visible outline is --accent, and #4338ca on the footer's
+   #12162e is only 2.3:1 — too close in lightness to see. Recolouring the
+   outline keeps the same 2px geometry while reaching 17.8:1. */
+.social-link:focus-visible {
+  outline-color: #ffffff;
 }
 
 /* 9. Placeholder pages --------------------------------------------------- */
@@ -1556,7 +1595,261 @@ code {
   }
 }
 
-/* 12. Keyframes ----------------------------------------------------------- */
+/* 12. Contact page -------------------------------------------------------- */
+/* The intro band and section wrapper mirror the About and Projects pages, so
+   every detail page shares one rhythm without borrowing another page's class
+   names. */
+.contact-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(2.5rem, 7vw, 4.5rem);
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(38rem 24rem at 90% -20%, #e7e9ff 0%, transparent 65%),
+    radial-gradient(30rem 22rem at -10% 120%, #fdf1dc 0%, transparent 65%);
+}
+
+.contact-hero-inner {
+  max-width: 52rem;
+}
+
+.contact-hero .page-title {
+  margin-top: 1rem;
+  font-size: clamp(2.4rem, 6vw, 3.5rem);
+}
+
+.contact-hero-lead {
+  max-width: 46rem;
+  margin-top: 1rem;
+  color: var(--ink-2);
+  font-size: 1.05rem;
+}
+
+.contact-section {
+  padding-block: var(--section-gap);
+  animation: rise-in 0.65s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+.contact-section-head {
+  max-width: 46rem;
+}
+
+.contact-section .section-lead {
+  margin-top: 0.65rem;
+}
+
+/* Details on the left, form on the right. One column until the screen is
+   wide enough for both to stay readable side by side. */
+.contact-layout {
+  display: grid;
+  align-items: start;
+  gap: 1.5rem;
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+/* Contact details list --------------------------------------------------- */
+.contact-list {
+  display: grid;
+  gap: 1.15rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The label and value rules below carry the extra .contact-details class so
+   they out-specify the generic .panel p rule, which would otherwise grey
+   them out.
+
+   One item = tile + a two-line text block, so the value lines up under the
+   label instead of under the tile. minmax(0, 1fr) stops a long email address
+   from stretching the column past the panel. */
+.contact-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.contact-details .contact-label {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* The bordered tile, built the same way as .brand-mark in the header: a
+   rounded square that centres whatever is inside it. */
+.contact-icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid #dfe2fb;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.contact-details .contact-value {
+  margin-top: 0.1rem;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  /* Long email addresses or URLs may need to break instead of overflowing. */
+  overflow-wrap: anywhere;
+}
+
+/* The form --------------------------------------------------------------- */
+.contact-form {
+  display: grid;
+  gap: 1.05rem;
+  margin-top: 1.35rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field-label {
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.field-input {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: var(--ink);
+  /* form controls do not inherit the page font by default */
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: border-color 0.2s ease, background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* The soft ring is drawn with box-shadow so the border can stay thin; the
+   shared :focus-visible outline still draws on top for keyboard users. */
+.field-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.field-input::placeholder {
+  color: var(--muted);
+}
+
+.field-textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+.field-hint {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* Error styling is driven by aria-invalid — the same attribute a screen
+   reader uses — so the red border can never disagree with the spoken state.
+   The message text itself is a second cue, so colour is never the only one. */
+.field-input[aria-invalid="true"] {
+  border-color: #b3261e;
+  background: #fef6f5;
+}
+
+.field-error {
+  color: #8c1d18; /* 8.4:1 on white */
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+/* The animation starts when the element stops being empty, so it plays
+   exactly when there is new text to read — not on every page load. */
+.field-error:not(:empty) {
+  animation: field-in 0.22s ease both;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* The overall result. Base rule is neutral; the success/error classes add
+   the colour and the animation. */
+.form-status {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status.is-error {
+  border-left: 4px solid #b3261e;
+  background: #fef6f5;
+  color: #7a1a15;
+  animation: status-in 0.3s ease both;
+}
+
+.form-status.is-success {
+  border-left: 4px solid #1f7a3d;
+  background: #f0fbf3;
+  color: #155e30;
+  animation: status-in 0.3s ease both;
+}
+
+/* Kept next to their only users rather than in the shared keyframes list. */
+@keyframes field-in {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes status-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 900px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 2rem;
+  }
+}
+
+/* 13. Keyframes ----------------------------------------------------------- */
 @keyframes rise-in {
   from {
     opacity: 0;

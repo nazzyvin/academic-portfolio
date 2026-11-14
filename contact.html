@@ -3,16 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact | Naz-k Vincent - Student Portfolio</title>
-  <meta name="description" content="How to contact Naz-k Vincent — email and social links. This contact page is coming soon.">
+  <title>Contact | Naz-k Vincent — Student Portfolio</title>
+  <meta name="description" content="Contact Naz-k Vincent about COS 106 coursework or this portfolio. Email, location and social links, plus a demo contact form checked with JavaScript.">
   <meta name="author" content="Naz-k Vincent">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/contact.js" defer></script>
   <noscript>
     <style>
       .nav-toggle { display: none; }
       .primary-nav { display: block !important; }
+      /* Nothing can check the form without JavaScript, and the site has no
+         server, so hide the form and point at the email address instead. */
+      .contact-form,
+      .contact-form-intro,
+      .form-status { display: none; }
     </style>
   </noscript>
 </head>
@@ -45,20 +51,183 @@
   </header>
 
   <main id="main">
-    <section class="section placeholder-main" aria-labelledby="page-title">
-      <div class="container">
-        <p class="eyebrow">COS 106 · Student portfolio</p>
-        <h1 class="page-title" id="page-title">Contact</h1>
+    <!-- Page intro -->
+    <section class="contact-hero" aria-labelledby="page-title">
+      <div class="container contact-hero-inner">
+        <p class="eyebrow">Contact</p>
+        <h1 class="page-title" id="page-title">Let's talk<span class="dot">.</span></h1>
+        <p class="contact-hero-lead">
+          Questions about my coursework, feedback on this site, or just want to
+          say hello? The details on this page are the quickest way to reach me.
+          The form below is a demo: JavaScript checks every field, but there is
+          no server behind it, so nothing is actually sent.
+        </p>
+        <p class="hero-meta">
+          <span>Demo form</span>
+          <span class="hero-meta-item">MIVA Open University</span>
+        </p>
+      </div>
+    </section>
 
-        <div class="placeholder-panel">
-          <h2>Coming soon</h2>
-          <p>
-            This page will hold my email address, GitHub profile and a simple
-            contact form. I will build it in a later stage of the project.
+    <!-- Contact details + form -->
+    <section class="contact-section" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-section-head">
+          <p class="section-label">Get in touch</p>
+          <h2 class="section-title" id="contact-title">Contact details</h2>
+          <p class="section-lead">
+            Email is the best way to reach me. You can also find me on GitHub
+            and LinkedIn.
           </p>
-          <a class="btn btn-ghost" href="index.html">
-            <span aria-hidden="true">←</span> Back to home
-          </a>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Left column: the details list -->
+          <div class="panel contact-details">
+            <h3 class="panel-title">Where to find me</h3>
+
+            <ul class="contact-list">
+              <li class="contact-item">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                       stroke="currentColor" stroke-width="2"
+                       stroke-linecap="round" stroke-linejoin="round"
+                       focusable="false">
+                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                    <path d="m3 7 9 6 9-6"></path>
+                  </svg>
+                </span>
+                <div class="contact-text">
+                  <p class="contact-label">Email</p>
+                  <p class="contact-value">
+                    <a href="mailto:nazkvin@gmail.com">nazkvin@gmail.com</a>
+                  </p>
+                </div>
+              </li>
+
+              <li class="contact-item">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                       stroke="currentColor" stroke-width="2"
+                       stroke-linecap="round" stroke-linejoin="round"
+                       focusable="false">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </span>
+                <div class="contact-text">
+                  <p class="contact-label">Location</p>
+                  <p class="contact-value">Port Harcourt, Nigeria</p>
+                </div>
+              </li>
+
+              <li class="contact-item">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                       stroke="currentColor" stroke-width="2"
+                       stroke-linecap="round" stroke-linejoin="round"
+                       focusable="false">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                </span>
+                <div class="contact-text">
+                  <p class="contact-label">GitHub</p>
+                  <p class="contact-value"><a href="https://github.com/nazzyvin" target="_blank" rel="noopener noreferrer">github.com/nazzyvin</a></p>
+                </div>
+              </li>
+
+              <li class="contact-item">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                       stroke="currentColor" stroke-width="2"
+                       stroke-linecap="round" stroke-linejoin="round"
+                       focusable="false">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect width="4" height="12" x="2" y="9"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </span>
+                <div class="contact-text">
+                  <p class="contact-label">LinkedIn</p>
+                  <p class="contact-value"><a href="https://www.linkedin.com/in/nazkvincent89" target="_blank" rel="noopener noreferrer">linkedin.com/in/nazkvincent89</a></p>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+
+          <!-- Right column: the form -->
+          <div class="panel contact-form-panel">
+            <h3 class="panel-title" id="form-title">Send a message</h3>
+            <p class="contact-form-intro">
+              All four fields are required. JavaScript checks them when you
+              press the button and shows every problem at once.
+            </p>
+
+            <noscript>
+              <p class="note">
+                JavaScript is switched off, so the form cannot check your
+                details. Please email me at
+                <a href="mailto:your.email@example.com">your.email@example.com</a>
+                instead.
+              </p>
+            </noscript>
+
+            <!-- novalidate switches OFF the browser's own validation bubbles.
+                 Our JavaScript then runs instead, which means we control the
+                 wording, the styling, and show all errors at once rather than
+                 one field at a time. Without novalidate the browser would
+                 block the submit event before our code ever saw it. -->
+            <form class="contact-form" id="contact-form" novalidate aria-labelledby="form-title">
+
+              <div class="field">
+                <label class="field-label" for="name">Name</label>
+                <input class="field-input" id="name" name="name" type="text"
+                       autocomplete="name" placeholder="Your full name"
+                       required aria-describedby="name-error">
+                <!-- aria-describedby links this input to the message below, so
+                     a screen reader reads the error as part of the field. -->
+                <p class="field-error" id="name-error"></p>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="email">Email address</label>
+                <input class="field-input" id="email" name="email" type="email"
+                       autocomplete="email" placeholder="you@example.com"
+                       required aria-describedby="email-error">
+                <p class="field-error" id="email-error"></p>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="phone">Phone number</label>
+                <input class="field-input" id="phone" name="phone" type="tel"
+                       inputmode="numeric" autocomplete="tel"
+                       placeholder="0801234567" required
+                       aria-describedby="phone-hint phone-error">
+                <!-- Told up front, so the digits-only rule is never a surprise
+                     after submitting. -->
+                <p class="field-hint" id="phone-hint">Digits only, for example 0801234567 — no +, spaces or dashes.</p>
+                <p class="field-error" id="phone-error"></p>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="message">Message</label>
+                <textarea class="field-input field-textarea" id="message" name="message"
+                          rows="5" placeholder="What would you like to say?"
+                          required aria-describedby="message-error"></textarea>
+                <p class="field-error" id="message-error"></p>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Send message</button>
+              </div>
+
+              <!-- aria-live="polite" tells assistive technology to announce
+                   whatever text lands in here, without stealing focus. -->
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -67,7 +236,41 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p class="footer-copy">© 2026 <strong>Naz-k Vincent</strong>. All rights reserved.</p>
-      <p class="footer-meta">COS 106 · Introduction to Web Technologies</p>
+      <ul class="footer-social">
+        <li>
+          <a class="social-link" href="mailto:nazkvin@gmail.com" aria-label="Email Naz-k Vincent">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="m3 7 9 6 9-6"></path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="social-link" href="https://github.com/nazzyvin" aria-label="Naz-k Vincent on GitHub"
+             target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+              <path d="M9 18c-4.51 2-5-2-7-2"></path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="social-link" href="https://www.linkedin.com/in/nazkvincent89" aria-label="Naz-k Vincent on LinkedIn"
+             target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </li>
+      </ul>
     </div>
   </footer>
 
