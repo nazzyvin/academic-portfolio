@@ -3,16 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About | Naz-k Vincent - Student Portfolio</title>
-  <meta name="description" content="About Naz-k Vincent: biography, education and the skills I am building in COS 106. This page is coming soon.">
+  <title>About | Naz-k Vincent — Student Portfolio</title>
+  <meta name="description" content="About Naz-k Vincent, a Computer Science student at MIVA Open University: education, COS 106 courses, career goals, technical skills and hobbies.">
   <meta name="author" content="Naz-k Vincent">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/about.js" defer></script>
   <noscript>
     <style>
       .nav-toggle { display: none; }
       .primary-nav { display: block !important; }
+      /* The filter buttons and empty container need JS; hide them and show
+         the plain fallback list instead. */
+      .skills-controls,
+      .skills-status,
+      .skills-groups { display: none; }
     </style>
   </noscript>
 </head>
@@ -45,21 +51,281 @@
   </header>
 
   <main id="main">
-    <section class="section placeholder-main" aria-labelledby="page-title">
-      <div class="container">
-        <p class="eyebrow">COS 106 · Student portfolio</p>
-        <h1 class="page-title" id="page-title">About</h1>
+    <!-- Page intro -->
+    <section class="about-hero" aria-labelledby="page-title">
+      <div class="container about-hero-inner">
+        <p class="eyebrow">About me</p>
+        <h1 class="page-title" id="page-title">A closer look<span class="dot">.</span></h1>
+        <p class="about-hero-lead">
+          I am Naz-k Vincent, a Computer Science student at MIVA Open University
+          in Port Harcourt, Nigeria. This page adds the detail behind the
+          homepage: my education, the courses I am taking, where I want to go,
+          and the skills I am building along the way.
+        </p>
+        <p class="hero-meta">
+          <span>BSc Computer Science · Level 100</span>
+          <span class="hero-meta-item">MIVA Open University</span>
+        </p>
+      </div>
+    </section>
 
-        <div class="placeholder-panel">
-          <h2>Coming soon</h2>
-          <p>
-            This page will hold my full biography, education history and the
-            skills I am developing. I will build it in a later stage of the
-            project.
+    <!-- 1. Educational background -->
+    <section class="about-section" aria-labelledby="education-title">
+      <div class="container">
+        <div class="about-section-head">
+          <p class="section-label">Education</p>
+          <h2 class="section-title" id="education-title">Where I have studied</h2>
+          <p class="section-lead">
+            A short timeline of the schools and qualifications that brought me
+            to where I am now.
           </p>
-          <a class="btn btn-ghost" href="index.html">
-            <span aria-hidden="true">←</span> Back to home
-          </a>
+        </div>
+
+        <ol class="timeline">
+          <li class="timeline-item">
+            <p class="timeline-date"><time datetime="2026">2026</time> — Present</p>
+            <h3 class="timeline-title">MIVA Open University</h3>
+            <p class="timeline-place">BSc Computer Science · Level 100</p>
+            <p class="timeline-note">
+              Currently studying COS 106 — Introduction to Web Technologies.
+              Expected graduation year 2029
+            </p>
+          </li>
+
+          <li class="timeline-item">
+            <p class="timeline-date">
+              <time datetime="2024">2024</time> — <time datetime="2025">2025</time>
+            </p>
+            <h3 class="timeline-title">AltSchool Africa</h3>
+            <p class="timeline-place">Backend Engineering · Online Program</p>
+            <p class="timeline-note">
+              Diploma
+            </p>
+          </li>
+
+          <li class="timeline-item">
+            <p class="timeline-date">
+              <time datetime="2017">2017</time> — <time datetime="2023">2023</time>
+            </p>
+            <h3 class="timeline-title">Victory International High School</h3>
+            <p class="timeline-place">Secondary education · Port Harcourt, Nigeria</p>
+            <p class="timeline-note">
+              Junior & Senior WAEC
+            </p>
+          </li>
+
+          <li class="timeline-item">
+            <p class="timeline-date">
+              <time datetime="2012">2012</time> — <time datetime="2019">2019</time>
+            </p>
+            <h3 class="timeline-title">[PLACEHOLDER: Primary school name]</h3>
+            <p class="timeline-place">Primary education · [PLACEHOLDER: City, Country]</p>
+            <p class="timeline-note">
+              [PLACEHOLDER: one sentence about this stage, or delete this item.]
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 2. Course table -->
+    <section class="about-section section-alt" aria-labelledby="courses-title">
+      <div class="container">
+        <div class="about-section-head">
+          <p class="section-label">Courses</p>
+          <h2 class="section-title" id="courses-title">What I am studying</h2>
+          <p class="section-lead">
+            My Level 100 course list. On a small screen, scroll the table
+            sideways to see every column.
+          </p>
+          <p class="note">
+            [PLACEHOLDER: the course codes, titles, semesters and grades below
+            are examples — replace them with your real record.]
+          </p>
+        </div>
+
+        <div class="table-scroll" role="region" aria-label="Course list — scroll horizontally for all columns" tabindex="0">
+          <table class="courses-table">
+            <caption>COS 106 course list — Level 100, second semester, 2026</caption>
+            <thead>
+              <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Course title</th>
+                <th scope="col">Level / semester</th>
+                <th scope="col">Status</th>
+                <th scope="col">Grade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">COS 101</th>
+                <td>Introduction to Computer Science</td>
+                <td>100 · First</td>
+                <td><span class="status status-done">Completed</span></td>
+                <td>A</td>
+              </tr>
+              <tr>
+                <th scope="row">COS 102</th>
+                <td>Programming Fundamentals</td>
+                <td>100 · First</td>
+                <td><span class="status status-done">Completed</span></td>
+                <td>B</td>
+              </tr>
+              <tr>
+                <th scope="row">COS 106</th>
+                <td>Introduction to Web Technologies</td>
+                <td>100 · Second</td>
+                <td><span class="status status-active">In progress</span></td>
+                <td>Pending</td>
+              </tr>
+              <tr>
+                <th scope="row">COS 108</th>
+                <td>Mathematics for Computing</td>
+                <td>100 · Second</td>
+                <td><span class="status status-active">In progress</span></td>
+                <td>Pending</td>
+              </tr>
+              <tr>
+                <th scope="row">COS 110</th>
+                <td>Digital Literacy and Ethics</td>
+                <td>100 · Second</td>
+                <td><span class="status status-next">Planned</span></td>
+                <td>Pending</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Career aspirations -->
+    <section class="about-section" aria-labelledby="goals-title">
+      <div class="container">
+        <div class="about-section-head">
+          <p class="section-label">Career</p>
+          <h2 class="section-title" id="goals-title">Where I want to go</h2>
+          <p class="section-lead">
+            What I am working towards after this degree.
+          </p>
+        </div>
+
+        <div class="about-split">
+          <div class="about-copy">
+            <p>
+              My long-term goal is to become a developer who can take an idea
+              from a first sketch to a working, accessible product. I enjoy
+              both the logic behind the screen and the part people actually
+              use, so I am building a strong foundation in front-end work
+              while keeping an interest in back-end systems.
+            </p>
+            <p class="note">
+              [PLACEHOLDER: add the specific role, industry or company you are
+              aiming for, and anything you are doing now to get there.]
+            </p>
+          </div>
+
+          <ol class="goal-list">
+            <li>Complete my BSc in Computer Science with a strong final grade.</li>
+            <li>[PLACEHOLDER: finish COS 106 with a project I am proud to show.]</li>
+            <li>Build at least three portfolio projects and publish them on GitHub.</li>
+            <li>[PLACEHOLDER: secure an internship or junior developer role by 2028.]</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Technical skills (built by js/about.js) -->
+    <section class="about-section section-alt" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="about-section-head">
+          <p class="section-label">Technical skills</p>
+          <h2 class="section-title" id="skills-title">What I work with</h2>
+          <p class="section-lead">
+            These labels are a rough self-assessment, not exam results. Use the
+            filters to look at one category at a time.
+          </p>
+        </div>
+
+        <div class="skills-controls" role="group" aria-label="Filter skills by category">
+          <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" type="button" data-filter="Languages &amp; Technologies" aria-pressed="false">Languages &amp; Technologies</button>
+          <button class="filter-btn" type="button" data-filter="Tools" aria-pressed="false">Tools</button>
+          <button class="filter-btn" type="button" data-filter="Soft Skills" aria-pressed="false">Soft Skills</button>
+        </div>
+
+        <p class="skills-status" id="skills-status" role="status"></p>
+        <div class="skills-groups" id="skills-list"></div>
+
+        <!-- Shown only when JavaScript is off. Keep in sync with about.js. -->
+        <noscript>
+          <div class="skills-fallback">
+            <p class="note">JavaScript is turned off, so here is the same list in plain text.</p>
+
+            <h3>Languages &amp; Technologies</h3>
+            <ul>
+              <li><span>Python</span> <span class="level">Proficient</span></li>
+              <li><span>HTML</span> <span class="level">Intermediate</span></li>
+              <li><span>CSS</span> <span class="level">Developing</span></li>
+              <li><span>JavaScript</span> <span class="level">Developing</span></li>
+            </ul>
+
+            <h3>Tools</h3>
+            <ul>
+              <li><span>Git &amp; GitHub</span> <span class="level">Intermediate</span></li>
+              <li><span>VS Code</span> <span class="level">Proficient</span></li>
+              <li><span>Figma</span> <span class="level">Familiar</span></li>
+              <li><span>Chrome DevTools</span> <span class="level">Familiar</span></li>
+            </ul>
+
+            <h3>Soft Skills</h3>
+            <ul>
+              <li>Problem Solving</li>
+              <li>Communication</li>
+              <li>Adaptability</li>
+              <li>Continuous Learning</li>
+            </ul>
+          </div>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- 5. Hobbies and interests -->
+    <section class="about-section" aria-labelledby="hobbies-title">
+      <div class="container">
+        <div class="about-section-head">
+          <p class="section-label">Outside class</p>
+          <h2 class="section-title" id="hobbies-title">What I do for fun</h2>
+          <p class="section-lead">
+            The things that keep me curious when I am not studying.
+          </p>
+        </div>
+
+        <div class="hobby-grid">
+          <article class="hobby-card">
+            <span class="hobby-mark" aria-hidden="true">01</span>
+            <h3 class="hobby-title">Swimming</h3>
+            <p class="hobby-text">
+              What I like about swimmng is how the body moves in the water, and then the view below water
+              is something I find lovely.
+            </p>
+          </article>
+
+          <article class="hobby-card">
+            <span class="hobby-mark" aria-hidden="true">02</span>
+            <h3 class="hobby-title">Drawing</h3>
+            <p class="hobby-text">
+              I like to draw movie, cartoon, and anime characters. As far as I can remember I've been into drawing 
+              and I am also good at it.
+            </p>
+          </article>
+
+          <article class="hobby-card">
+            <span class="hobby-mark" aria-hidden="true">03</span>
+            <h3 class="hobby-title">Anime &amp; film</h3>
+            <p class="hobby-text">
+              [PLACEHOLDER: your favourite genres or titles, and why you like them.]
+            </p>
+          </article>
         </div>
       </div>
     </section>

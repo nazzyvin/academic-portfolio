@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#eef0ff"/>
+
+  <!-- Browser window -->
+  <rect x="60" y="40" width="680" height="420" rx="20" fill="#ffffff" stroke="#dfe2fb"/>
+  <path d="M80 40h640a20 20 0 0 1 20 20v52H60V60a20 20 0 0 1 20-20Z" fill="#f6f7fc"/>
+  <circle cx="92" cy="76" r="6" fill="#dfe2fb"/>
+  <circle cx="114" cy="76" r="6" fill="#dfe2fb"/>
+  <circle cx="136" cy="76" r="6" fill="#dfe2fb"/>
+  <text x="710" y="81" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#8b90ab">project-ai-chatbot.svg</text>
+
+  <!-- Question bubble -->
+  <rect x="100" y="140" width="300" height="84" rx="16" fill="#eef0ff"/>
+  <rect x="124" y="164" width="230" height="10" rx="5" fill="#c9cdf0"/>
+  <rect x="124" y="188" width="160" height="10" rx="5" fill="#c9cdf0"/>
+
+  <!-- Answer bubble -->
+  <rect x="420" y="244" width="280" height="76" rx="16" fill="#4338ca"/>
+  <rect x="444" y="266" width="200" height="9" rx="4.5" fill="#ffffff" opacity="0.85"/>
+  <rect x="444" y="288" width="132" height="9" rx="4.5" fill="#ffffff" opacity="0.85"/>
+
+  <!-- Message input -->
+  <rect x="100" y="350" width="600" height="60" rx="30" fill="#f6f7fc" stroke="#e3e6f2"/>
+  <text x="132" y="388" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#8b90ab">Ask your documents a question</text>
+  <circle cx="662" cy="380" r="22" fill="#4338ca"/>
+  <path d="M653 380h16m-7-7 7 7-7 7" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Placeholder label -->
+  <text x="400" y="440" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="5" fill="#5b6280">PLACEHOLDER SCREENSHOT</text>
+</svg>

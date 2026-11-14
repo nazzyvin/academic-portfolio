@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#fdf4e6"/>
+
+  <!-- Empty frame waiting for a real screenshot -->
+  <rect x="58" y="38" width="684" height="424" rx="24" fill="#ffffff" stroke="#c9cdf0" stroke-width="3" stroke-dasharray="12 10"/>
+
+  <text x="400" y="238" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="120" font-weight="700" fill="#eef0ff">03</text>
+  <text x="400" y="300" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="8" fill="#a35a06">PLACEHOLDER</text>
+  <text x="400" y="340" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#5b6280">Third project screenshot</text>
+  <text x="400" y="384" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#8b90ab">Replace images/project-third-placeholder.svg</text>
+</svg>

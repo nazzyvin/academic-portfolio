@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#f6f7fc"/>
+
+  <!-- Browser window -->
+  <rect x="60" y="40" width="680" height="420" rx="20" fill="#ffffff" stroke="#e3e6f2"/>
+  <path d="M80 40h640a20 20 0 0 1 20 20v52H60V60a20 20 0 0 1 20-20Z" fill="#fbfbfe"/>
+  <text x="710" y="81" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#8b90ab">index.html</text>
+
+  <!-- Site header -->
+  <rect x="88" y="64" width="26" height="26" rx="7" fill="#4338ca"/>
+  <text x="101" y="82" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">AP</text>
+  <rect x="124" y="73" width="92" height="8" rx="4" fill="#333a5c"/>
+  <rect x="520" y="72" width="40" height="9" rx="4.5" fill="#c9cdf0"/>
+  <rect x="572" y="72" width="40" height="9" rx="4.5" fill="#c9cdf0"/>
+  <rect x="624" y="72" width="40" height="9" rx="4.5" fill="#c9cdf0"/>
+  <rect x="676" y="72" width="40" height="9" rx="4.5" fill="#c9cdf0"/>
+
+  <!-- Hero block -->
+  <rect x="88" y="120" width="624" height="170" rx="16" fill="#eef0ff"/>
+  <rect x="112" y="146" width="112" height="16" rx="8" fill="#ffffff" stroke="#dfe2fb"/>
+  <rect x="112" y="178" width="300" height="18" rx="9" fill="#12162e"/>
+  <rect x="112" y="204" width="220" height="18" rx="9" fill="#12162e"/>
+  <rect x="112" y="232" width="340" height="10" rx="5" fill="#8b90ab"/>
+  <rect x="112" y="252" width="112" height="26" rx="13" fill="#4338ca"/>
+
+  <!-- Three cards -->
+  <g fill="#ffffff" stroke="#e3e6f2">
+    <rect x="88" y="310" width="190" height="110" rx="12"/>
+    <rect x="294" y="310" width="190" height="110" rx="12"/>
+    <rect x="500" y="310" width="190" height="110" rx="12"/>
+  </g>
+  <g fill="#eef0ff">
+    <rect x="106" y="328" width="28" height="28" rx="8"/>
+    <rect x="312" y="328" width="28" height="28" rx="8"/>
+    <rect x="518" y="328" width="28" height="28" rx="8"/>
+  </g>
+  <g fill="#c9cdf0">
+    <rect x="106" y="370" width="120" height="9" rx="4.5"/>
+    <rect x="312" y="370" width="120" height="9" rx="4.5"/>
+    <rect x="518" y="370" width="120" height="9" rx="4.5"/>
+    <rect x="106" y="390" width="90" height="9" rx="4.5"/>
+    <rect x="312" y="390" width="90" height="9" rx="4.5"/>
+    <rect x="518" y="390" width="90" height="9" rx="4.5"/>
+  </g>
+
+  <!-- Placeholder label -->
+  <text x="400" y="443" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="5" fill="#5b6280">PLACEHOLDER SCREENSHOT</text>
+</svg>

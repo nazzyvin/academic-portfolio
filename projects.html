@@ -3,16 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projects | Naz-k Vincent - Student Portfolio</title>
-  <meta name="description" content="Coursework and side projects by Naz-k Vincent for COS 106 — Introduction to Web Technologies. This page is coming soon.">
+  <title>Projects | Naz-k Vincent — Student Portfolio</title>
+  <meta name="description" content="Projects by Naz-k Vincent for COS 106: an AI chatbot assistant, this student portfolio and academic planner, and a third project in progress.">
   <meta name="author" content="Naz-k Vincent">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/projects.js" defer></script>
   <noscript>
     <style>
       .nav-toggle { display: none; }
       .primary-nav { display: block !important; }
+      /* "View details" needs JavaScript to open the dialog, so hide the
+         buttons and let the cards stand on their own instead. */
+      .project-more { display: none; }
     </style>
   </noscript>
 </head>
@@ -45,25 +49,159 @@
   </header>
 
   <main id="main">
-    <section class="section placeholder-main" aria-labelledby="page-title">
-      <div class="container">
-        <p class="eyebrow">COS 106 · Student portfolio</p>
-        <h1 class="page-title" id="page-title">Projects</h1>
+    <!-- Page intro -->
+    <section class="projects-hero" aria-labelledby="page-title">
+      <div class="container projects-hero-inner">
+        <p class="eyebrow">Project work</p>
+        <h1 class="page-title" id="page-title">Things I have built<span class="dot">.</span></h1>
+        <p class="projects-hero-lead">
+          Three projects, each built to answer a question I could not answer
+          from a textbook. Every card has the short version; the details button
+          opens a longer note about what the project does and what I learned.
+        </p>
+        <p class="hero-meta">
+          <span>3 projects</span>
+          <span class="hero-meta-item">Updated 2026</span>
+        </p>
+      </div>
+    </section>
 
-        <div class="placeholder-panel">
-          <h2>Coming soon</h2>
-          <p>
-            This page will show my COS 106 coursework and personal projects,
-            with a short write-up of what I built and what I learned. I will
-            build it in a later stage of the project.
+    <!-- Project cards -->
+    <section class="projects-section" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="projects-section-head">
+          <p class="section-label">Portfolio</p>
+          <h2 class="section-title" id="projects-title">Selected work</h2>
+          <p class="section-lead">
+            A mix of coursework and personal projects. The third card is a
+            blank space waiting for my next build.
           </p>
-          <a class="btn btn-ghost" href="index.html">
-            <span aria-hidden="true">←</span> Back to home
-          </a>
+          <p class="note">
+            [PLACEHOLDER: replace the screenshots in <code>images/</code>, the
+            link <code>href="#"</code> values, and the third project. Then edit
+            the matching entries in <code>js/projects.js</code>.]
+          </p>
+        </div>
+
+        <div class="project-grid" id="project-grid">
+          <!-- 1. AI chatbot -->
+          <article class="project-card">
+            <img class="project-shot" src="images/project-ai-chatbot.svg" alt="Placeholder screenshot for the AI Chatbot Assistant: a chat window with a question, an answer bubble and a message box." width="800" height="500" loading="lazy">
+
+            <div class="project-body">
+              <p class="project-kicker">AI · Full stack</p>
+              <h3 class="project-title">AI Chatbot Assistant</h3>
+              <p class="project-text">
+                A chatbot that answers questions from a document-based knowledge
+                base instead of the open internet. An admin panel lets an
+                administrator add and manage the documents it searches, and the
+                front end is plain JavaScript talking to a Python API.
+              </p>
+
+              <p class="project-tech-label" id="tech-chatbot">Tech used</p>
+              <ul class="tag-list project-tags" aria-labelledby="tech-chatbot">
+                <li class="tag">Python</li>
+                <li class="tag">FastAPI</li>
+                <li class="tag">MySQL</li>
+                <li class="tag">Qdrant</li>
+                <li class="tag">JavaScript</li>
+              </ul>
+
+              <div class="project-actions">
+                <!-- TODO: replace href="#" with the live demo URL. When the
+                     link points to another site, add target="_blank"
+                     rel="noopener noreferrer" as well. -->
+                <a class="btn btn-primary btn-sm" href="#">View project</a>
+                <span class="project-private">Private repository</span>
+                <button class="btn btn-ghost btn-sm project-more" type="button" data-project="chatbot" aria-haspopup="dialog" aria-controls="project-dialog">
+                  View details<span class="visually-hidden"> for AI Chatbot Assistant</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. This portfolio -->
+          <article class="project-card">
+            <img class="project-shot" src="images/project-portfolio.svg" alt="Placeholder screenshot of this portfolio site: a browser window with a hero section and three cards." width="800" height="500" loading="lazy">
+
+            <div class="project-body">
+              <p class="project-kicker">COS 106 · This site</p>
+              <h3 class="project-title">Student Portfolio and Academic Planner</h3>
+              <p class="project-text">
+                This website: a multi-page portfolio and academic planner built
+                by hand with HTML, CSS and JavaScript. Every page shares one
+                stylesheet, one navigation menu and one footer, which keeps the
+                design consistent and the files small.
+              </p>
+
+              <p class="project-tech-label" id="tech-portfolio">Tech used</p>
+              <ul class="tag-list project-tags" aria-labelledby="tech-portfolio">
+                <li class="tag">HTML</li>
+                <li class="tag">CSS</li>
+                <li class="tag">JavaScript</li>
+              </ul>
+
+              <div class="project-actions">
+                <!-- TODO: replace both href="#" values with your live site and
+                     GitHub repo. Add target="_blank" rel="noopener noreferrer"
+                     to each link that opens another site. -->
+                <a class="btn btn-primary btn-sm" href="#">View project</a>
+                <a class="btn btn-ghost btn-sm" href="#">Source code</a>
+                <button class="btn btn-ghost btn-sm project-more" type="button" data-project="portfolio" aria-haspopup="dialog" aria-controls="project-dialog">
+                  View details<span class="visually-hidden"> for Student Portfolio and Academic Planner</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Placeholder for the next project -->
+          <article class="project-card">
+            <img class="project-shot" src="images/project-third-placeholder.svg" alt="Placeholder graphic for the third project: a dashed frame with the number 03." width="800" height="500" loading="lazy">
+
+            <div class="project-body">
+              <p class="project-kicker">Placeholder · Project 03</p>
+              <h3 class="project-title">[PLACEHOLDER: Project name]</h3>
+              <p class="project-text">
+                [PLACEHOLDER: 2–3 sentences about your third project — what it
+                does, who it is for and what you built.]
+              </p>
+
+              <p class="project-tech-label" id="tech-third">Tech used</p>
+              <ul class="tag-list project-tags" aria-labelledby="tech-third">
+                <li class="tag">[Add tech]</li>
+                <li class="tag">[Add tech]</li>
+                <li class="tag">[Add tech]</li>
+              </ul>
+
+              <div class="project-actions">
+                <!-- TODO: replace both href="#" values with real URLs, then
+                     add target="_blank" rel="noopener noreferrer". -->
+                <a class="btn btn-primary btn-sm" href="#">View project</a>
+                <a class="btn btn-ghost btn-sm" href="#">Source code</a>
+                <button class="btn btn-ghost btn-sm project-more" type="button" data-project="third" aria-haspopup="dialog" aria-controls="project-dialog">
+                  View details<span class="visually-hidden"> for the third project</span>
+                </button>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- One dialog is shared by all three cards. js/projects.js fills it from
+       the clicked button's data-project value. -->
+  <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <button class="dialog-close" type="button" aria-label="Close project details">&times;</button>
+      <p class="dialog-kicker">Selected work</p>
+      <h2 class="dialog-title" id="dialog-title">Project details</h2>
+      <p class="dialog-text" id="dialog-summary"></p>
+      <h3 class="dialog-sub">What I learned</h3>
+      <p class="dialog-text" id="dialog-learned"></p>
+      <p class="dialog-hint">Press Escape or click outside this box to close.</p>
+    </div>
+  </dialog>
 
   <footer class="site-footer">
     <div class="container footer-inner">
