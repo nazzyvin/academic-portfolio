@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Planner | Naz-k Vincent - Student Portfolio</title>
-  <meta name="description" content="A weekly academic planner for Naz-k Vincent, built as part of COS 106 — Introduction to Web Technologies. This page is coming soon.">
+  <title>Planner | Naz-k Vincent — Student Portfolio</title>
+  <meta name="description" content="Naz-k Vincent's academic planner for COS 106: add study tasks, tick them off when they are done and delete them. Built with plain HTML, CSS and JavaScript.">
   <meta name="author" content="Naz-k Vincent">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/planner.css">
+  <!-- defer means the browser downloads this file immediately but runs it only
+       after the whole page has been parsed, so every element below exists. -->
+  <script src="js/planner.js" defer></script>
   <noscript>
     <style>
       .nav-toggle { display: none; }
@@ -45,21 +49,95 @@
   </header>
 
   <main id="main">
-    <section class="section placeholder-main" aria-labelledby="page-title">
+    <!-- Page intro -->
+    <section class="section planner-main" aria-labelledby="page-title">
       <div class="container">
-        <p class="eyebrow">COS 106 · Student portfolio</p>
-        <h1 class="page-title" id="page-title">Planner</h1>
+        <p class="eyebrow">Study planner</p>
+        <h1 class="page-title" id="page-title">Plan the week<span class="dot">.</span></h1>
+        <p class="planner-lead">
+          Add a study task, tick it off when it is done, and delete it when it
+          no longer matters. Everything on this page runs in the browser.
+        </p>
 
-        <div class="placeholder-panel">
-          <h2>Coming soon</h2>
-          <p>
-            This page will hold my weekly study planner, with space for
-            deadlines and revision sessions. I will build it in a later stage
-            of the project.
-          </p>
-          <a class="btn btn-ghost" href="index.html">
-            <span aria-hidden="true">←</span> Back to home
-          </a>
+        <div class="planner-board">
+          <!-- With JavaScript off, the form below cannot work, so say so
+               before the visitor tries it. -->
+          <noscript>
+            <p class="planner-noscript">
+              The planner needs JavaScript. With JavaScript turned off you can
+              still read this page, but adding, ticking off and deleting tasks
+              will not work.
+            </p>
+          </noscript>
+
+          <!-- Add a task -->
+          <section class="planner-add" aria-labelledby="add-task-title">
+            <h2 class="planner-subtitle" id="add-task-title">Add a task</h2>
+
+            <form class="planner-form" id="task-form">
+              <label class="planner-label" for="task-input">Task</label>
+              <div class="planner-form-row">
+                <input class="planner-input" id="task-input" name="task" type="text"
+                       autocomplete="off" placeholder="e.g. Revise chapter 3 for Monday" required>
+                <button class="btn btn-primary planner-submit" type="submit">Add task</button>
+              </div>
+            </form>
+          </section>
+
+          <!-- The task list -->
+          <section class="planner-tasks" aria-labelledby="task-list-title">
+            <div class="planner-list-head">
+              <h2 class="planner-subtitle" id="task-list-title">Your tasks</h2>
+              <!-- js/planner.js fills this in, e.g. "3 tasks, 1 completed". -->
+              <p class="task-counter" id="task-counter" aria-live="polite"></p>
+            </div>
+
+            <!-- The empty state starts visible because there really are no
+                 tasks yet. js/planner.js hides it as soon as the list fills. -->
+            <p class="task-empty" id="task-empty">No tasks yet — add your first one above.</p>
+
+            <ul class="task-list" id="task-list"></ul>
+
+            <!-- ==========================================================
+                 TARGET STRUCTURE FOR ONE TASK
+                 js/planner.js must build exactly one <li> like this for each
+                 task, replacing 1 with that task's own unique id.
+                 ==========================================================
+
+                 <li class="task-item" data-id="1">
+                   <input class="task-check" type="checkbox" id="task-check-1">
+                   <label class="task-text" for="task-check-1">Revise chapter 3</label>
+                   <button class="task-delete" type="button" aria-label="Delete task: Revise chapter 3">
+                     <span aria-hidden="true">×</span>
+                   </button>
+                 </li>
+
+                 A COMPLETED task is the same <li> plus the class .is-complete,
+                 and its checkbox is checked:
+
+                 <li class="task-item is-complete" data-id="1">
+                   <input class="task-check" type="checkbox" id="task-check-1" checked>
+                   <label class="task-text" for="task-check-1">Revise chapter 3</label>
+                   <button class="task-delete" type="button" aria-label="Delete task: Revise chapter 3">
+                     <span aria-hidden="true">×</span>
+                   </button>
+                 </li>
+
+                 WHY IT IS BUILT THIS WAY
+                 - data-id sits on the <li>, so one listener on #task-list can
+                   find the task with event.target.closest('.task-item')
+                   and read .dataset.id.
+                 - id="task-check-1" and for="task-check-1" MUST match: that
+                   is what makes the task text a real label, so clicking the
+                   words ticks the box, and a screen reader announces the task
+                   text as the checkbox's name.
+                 - The id has to be unique on the page, which is why the task
+                   id is part of it.
+                 - The delete button's aria-label names WHICH task it deletes;
+                   the × is aria-hidden, so it is decoration only.
+                 - The task text goes in with textContent, never innerHTML.
+                 ========================================================== -->
+          </section>
         </div>
       </div>
     </section>

@@ -764,13 +764,12 @@ code {
 
 /* Each tile uses the form field's border recipe: 1px solid --line-strong
    with the same 10px radius. --line-strong is a pale blue that reads on the
-   dark footer without turning into a bright white block.
-   2rem (32px) keeps the target comfortably above the 24px WCAG minimum. */
+   dark footer without turning into a bright white block. */
 .social-link {
   display: grid;
   place-items: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-sm);
   color: var(--line-strong);

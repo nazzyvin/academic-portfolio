@@ -1,0 +1,250 @@
+/* ==========================================================================
+   planner.css — styles for the Academic Planner page only
+
+   planner.html loads this AFTER css/style.css, so every design token from
+   :root there (--ink, --accent, --line, --radius-lg, ...) is available here.
+   ========================================================================== */
+
+/* 1. Page intro ----------------------------------------------------------- */
+
+/* The page sits on the soft background the other pages use for hero bands,
+   so the white board in the middle reads as a card. */
+.planner-main {
+   background: var(--bg-soft);
+   border-bottom: 1px solid var(--line);
+}
+
+.planner-lead {
+   max-width: 46rem;
+   margin-top: 0.75rem;
+   color: var(--ink-2);
+   font-size: 1.02rem;
+}
+
+/* 2. The board ------------------------------------------------------------ */
+.planner-board {
+   margin-top: 2rem;
+   padding: clamp(1.25rem, 4vw, 2rem);
+   border: 1px solid var(--line);
+   border-radius: var(--radius-lg);
+   background: var(--bg);
+   box-shadow: var(--shadow-sm);
+}
+
+/* 3. Add-task form -------------------------------------------------------- */
+.planner-add {
+   margin-bottom: 1.5rem;
+   padding-bottom: 1.5rem;
+   border-bottom: 1px solid var(--line);
+}
+
+.planner-subtitle {
+   font-size: 1.15rem;
+}
+
+.planner-form {
+   display: grid;
+   gap: 0.4rem;
+   margin-top: 0.9rem;
+}
+
+.planner-label {
+   color: var(--ink);
+   font-size: 0.85rem;
+   font-weight: 600;
+}
+
+   /* Mobile first: input and button stack. The media query puts them in a row. */
+.planner-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.planner-input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--ink);
+  /* form controls do not inherit the page font by default */
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.planner-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.planner-input::placeholder {
+  color: var(--muted);
+}
+
+.planner-submit {
+  flex: 0 0 auto;
+}
+
+@media (min-width: 480px) {
+  .planner-form-row {
+    flex-direction: row;
+  }
+
+  .planner-input {
+    flex: 1 1 auto;
+  }
+}
+
+/* 4. List heading and counter --------------------------------------------- */
+.planner-list-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+}
+
+.task-counter {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 5. Empty state ---------------------------------------------------------- */
+
+/* NO display property here on purpose: planner.js hides this with the hidden
+   attribute, and any display rule would override that. */
+.task-empty {
+  margin-top: 1rem;
+  padding: 1.5rem 1rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+/* 6. The list and one task row -------------------------------------------- */
+.task-list {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  transition: border-color 0.2s ease, background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.task-item:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.task-check {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.task-text {
+  flex: 1 1 auto;
+  /* min-width: 0 lets the flex item shrink; overflow-wrap breaks one very
+     long word. Without these the page scrolls sideways on a phone. */
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.task-delete {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.task-delete:hover {
+  border-color: #f3c9c4;
+  background: #fef6f5;
+  color: #8c1d18;
+}
+
+/* 7. Completed state ------------------------------------------------------ */
+/* Three cues at once: lighter row, muted text, strike-through — the state
+   never depends on colour alone. */
+.task-item.is-complete {
+  background: var(--bg-soft);
+}
+
+.task-item.is-complete .task-text {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+/* 8. Motion --------------------------------------------------------------- */
+/* Only the row just added gets .is-new, so ticking a box does not replay the
+   animation on every row. */
+@keyframes task-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.task-item.is-new {
+  animation: task-in 0.25s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .task-item.is-new {
+    animation: none;
+  }
+}
+
+/* 9. No-JS warning -------------------------------------------------------- */
+.planner-noscript {
+  margin-bottom: 1.5rem;
+  padding: 0.85rem 1rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--gold-soft);
+  color: #6b3f05;
+  font-size: 0.9rem;
+}
