@@ -1,45 +1,67 @@
 # Academic Portfolio
 
-A responsive, multi-page student portfolio and academic management website,
-built with plain HTML, CSS and vanilla JavaScript. No frameworks, no build
-tools, no npm packages.
+A responsive, five-page student portfolio and academic planner built with
+plain HTML, CSS, and vanilla JavaScript. It has no framework, build step, or
+package dependencies.
 
-**Stage 1 (this version):** shared header/navigation/footer, the homepage, and
-placeholder pages for About, Projects, Planner and Contact.
+## Pages and features
 
-## Folder structure
+- **Home** (`index.html`): introduction, selected work, audio introduction, and
+  links to the rest of the site.
+- **About** (`about.html`): education, goals, skills, and interests.
+- **Projects** (`projects.html`): project cards with accessible detail dialogs.
+- **Planner** (`planner.html`): add, complete, and delete study tasks saved in
+  the browser's local storage.
+- **Contact** (`contact.html`): contact details and a client-side validated
+  demo form. The form does not send messages to a server.
 
-```
+Every page shares the same navigation, footer, stylesheet, and theme control.
+The theme follows the device preference until a visitor chooses Light or Dark
+Mode; that choice is saved in local storage and used on later visits.
+
+## Project structure
+
+```text
 academic-portfolio/
-├── index.html                 Homepage (hero, bio, audio, quick links)
-├── about.html                 Placeholder — "Coming soon"
-├── projects.html              Placeholder — "Coming soon"
-├── planner.html               Placeholder — "Coming soon"
-├── contact.html               Placeholder — "Coming soon"
+├── index.html
+├── about.html
+├── projects.html
+├── planner.html
+├── contact.html
 ├── css/
-│   └── style.css              One stylesheet shared by every page
+│   ├── style.css       Shared layout, components, and theme colors
+│   └── planner.css     Planner-specific styles
 ├── js/
-│   └── main.js                Shared JS: mobile menu toggle
+│   ├── theme.js        Applies the saved or system theme before first paint
+│   ├── main.js         Shared theme control and mobile navigation
+│   ├── about.js        About page skill filters
+│   ├── projects.js     Project detail dialogs
+│   ├── planner.js      Study task behavior and storage
+│   └── contact.js      Contact form validation
 ├── images/
-│   ├── profile-placeholder.svg   Placeholder portrait (replace it)
-│   └── favicon.svg               Browser tab icon
-├── media/
-│   ├── welcome-intro.wav      Placeholder audio (test chime — replace it)
-│   └── README.txt             Notes about adding your own media
-└── README.md
+│   ├── academic-portfolio.png
+│   ├── blueflow.png
+│   ├── favicon.svg
+│   ├── my-profile.jpeg
+│   ├── profile-placeholder.svg
+│   └── qr-content-extractor.png
+└── media/
+    └── welcome-intro.mp3
 ```
 
-All links and asset paths are relative, so the site works from a file path,
-a local server, or a GitHub Pages project URL without edits.
+## Running the site
 
-## Tech notes
+Open `index.html` directly or serve the project directory with any static web
+server. All page, stylesheet, script, and asset references use relative paths.
+JavaScript is needed for the theme control, mobile menu, project dialogs,
+planner, and contact form; the page content remains readable without it.
 
-- **Mobile-first CSS** with Flexbox and CSS Grid.
-- **Design tokens** in `:root` — change a colour or spacing value once.
-- **Accessible navigation:** real `<button>`, `aria-expanded`, `aria-controls`,
-  visible focus styles, a skip link, and `aria-current="page"` on the active
-  link. The menu is styled from `aria-current`, so the visual state cannot go
-  out of sync with what assistive technology is told.
-- **Animation** is limited and respects `prefers-reduced-motion`.
-- **No JavaScript required to read the site:** a `<noscript>` rule reveals the
-  navigation when scripting is off.
+## Implementation notes
+
+- Mobile-first layouts use Flexbox and CSS Grid.
+- Shared colors and layout values are CSS custom properties in `css/style.css`.
+- Theme selection uses the `data-theme` attribute on the document root. A saved
+  choice takes priority over `prefers-color-scheme`; otherwise the operating
+  system preference is followed, with Light Mode as the fallback.
+- Navigation and controls include keyboard focus states and accessible labels.
+- Motion respects `prefers-reduced-motion`.

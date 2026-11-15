@@ -389,6 +389,7 @@ code {
 .theme-icon-moon { display: none; }
 :root[data-theme="dark"] .theme-icon-sun { display: none; }
 :root[data-theme="dark"] .theme-icon-moon { display: block; }
+:root[data-theme="dark"] .brand-mark { border: 1px solid rgb(255 255 255 / 55%) }
 
 .primary-nav.is-open {
   display: block;
