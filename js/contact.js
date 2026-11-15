@@ -1,5 +1,5 @@
 /* ==========================================================================
-   contact.js — checks the contact form on contact.html
+   contact.js - checks the contact form on contact.html
    Stage 4 lesson: forms, preventDefault, functions that return values,
    regular expressions, and live error messages.
 
@@ -7,7 +7,7 @@
    in the page before this file runs.
 
    This site is static: there is no server. A "successful" submit only proves
-   the values passed the checks below — nothing is sent anywhere, and the
+   the values passed the checks below - nothing is sent anywhere, and the
    success message says so on purpose.
    ========================================================================== */
 
@@ -18,14 +18,14 @@
 //   @        "a literal @ sign"
 //   \.       "a literal dot" (a bare . would mean "any character")
 //   $        "the match must end here"
-// So: text, @, text, dot, text — with no spaces anywhere.
+// So: text, @, text, dot, text - with no spaces anywhere.
 // No email regex is perfect: this one accepts a@b.com and rejects a@b, which
 // is exactly the simple rule this project needs.
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 //   ^\d+$  = digits (\d) from the first character to the last, nothing else.
 // `\d` is the same as [0-9], so a letter O or a dash fails the test.
-const DIGITS_PATTERN = /^\d+$/;
+const PHONE_PATTERN = /^\+?[0-9\s().-]+$/;
 
 // Each rule below is one small function that takes the field's text and
 // RETURNS an error message, or "" (empty string) when the text is fine.
@@ -52,17 +52,30 @@ function validateEmail(value) {
   return "";
 }
 
+
 function validatePhone(value) {
   const cleaned = value.trim();
 
+  // Phone number is optional.
   if (cleaned === "") {
-    return "Please enter your phone number.";
+    return "";
   }
-  // Real-world phone fields usually allow "+", spaces and dashes. This
-  // assignment asks for digits only, so that is the rule here.
-  if (!DIGITS_PATTERN.test(cleaned)) {
-    return "Please use digits only, with no spaces or dashes.";
+
+  // Only allow digits, an optional leading +, spaces,
+  // brackets and hyphens.
+  if (!PHONE_PATTERN.test(cleaned)) {
+    return "Please enter a valid phone number.";
   }
+
+  // Remove formatting characters before checking digit count.
+  const digits = cleaned.replace(/[\s().-]/g, "");
+
+  // International numbers generally contain 7–15 digits.
+  if (digits.replace("+", "").length < 7 ||
+      digits.replace("+", "").length > 15) {
+    return "Your phone number should contain between 7 and 15 digits.";
+  }
+
   return "";
 }
 

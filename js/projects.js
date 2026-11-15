@@ -1,6 +1,6 @@
 /* ==========================================================================
    projects.js — opens the "View details" dialog on projects.html
-   Stage 3 lesson: event delegation + the native <dialog> element.
+   Event delegation + the native <dialog> element.
 
    The script is loaded with `defer`, so the browser has already parsed the
    whole page before any of this runs. Nothing here is needed to READ the
@@ -11,24 +11,53 @@
 /* --- 1. The long-form text ---------------------------------------------- */
 // Only the EXTRA text lives here. The card titles, short descriptions and
 // links stay in the HTML, so the page still makes sense without JavaScript.
-// Each key must match a data-project value in projects.html: "chatbot" here
-// is data-project="chatbot" on the first card's button.
-// PLACEHOLDER: edit these three entries to match your real projects.
+// Each key must match a data-project value in projects.html: "blueflow" here
+// is data-project="blueflow" on the first card's button.
 const projectDetails = {
-  chatbot: {
-    title: "AI Chatbot Assistant",
-    summary: "I built a chatbot that answers questions from a private collection of documents instead of the open internet. Documents are uploaded through an admin panel, stored in a database and indexed in a vector database, so the app can find the passages that answer a question and reply with sources. The interface is plain JavaScript talking to a Python API, which keeps the model keys and the data off the browser.",
-    learned: "This project taught me how a front end talks to a backend, why secrets must never sit in browser code, and why error states matter when a reply takes several seconds. [PLACEHOLDER: add one more thing you learned.]"
+  blueflow: {
+    kicker: "Full-stack development",
+    title: "BlueFlow",
+    summary: "A task management application built with Django and Django REST Framework. It brings user authentication, named task lists and a responsive Bootstrap interface together, so the backend and the front end are exercised by the same product.",
+    why: "I wanted to connect the two halves of web development instead of practising them separately. Django gave me models, authentication and an API; the front end had to use them in a real interface, which is where most of the learning happened.",
+    features: [
+      "User accounts with registration and sign-in handled by Django",
+      "Create, edit, complete and delete tasks inside named lists",
+      "A REST API built with Django REST Framework",
+      "A responsive Bootstrap interface for desktop and phone screens",
+      "Tasks and accounts stored in SQLite during development"
+    ],
+    tech: "Python · Django · Django REST Framework · SQLite · Bootstrap",
+    learned: "The main lesson was that a backend is only half a product: an API has to be designed around what the interface actually needs. I also got comfortable with Django's authentication, its ORM, and the point where a framework's defaults stop being enough."
   },
   portfolio: {
-    title: "Student Portfolio and Academic Planner",
-    summary: "This is the site you are reading. It is a multi-page portfolio built by hand with HTML, CSS and JavaScript, covering my biography, my courses, my projects and a study planner. Every page shares one stylesheet, one navigation menu and one footer, so a change to the design happens in one file instead of five.",
-    learned: "Building it one page at a time showed me why shared styles beat copy-and-paste, and how CSS Grid and Flexbox replace a lot of fiddly width rules. [PLACEHOLDER: add one more sentence.]"
+    kicker: "Frontend development",
+    title: "Academic Portfolio",
+    summary: "This is the site you are reading. It brings my academic background, projects, skills and study planning together across five pages, and every page shares one stylesheet, one navigation menu and one footer.",
+    why: "COS 106 introduced the technologies I had been using informally, and I wanted the assignment to outlast the semester. Rather than a single page of coursework, I built the place where the rest of my work could live.",
+    features: [
+      "Five pages covering home, about, projects, the planner and contact",
+      "One shared stylesheet, header and footer across every page",
+      "A weekly planner that keeps its tasks in the browser's local storage",
+      "A contact form with inline validation and accessible error messages",
+      "Responsive layouts, keyboard-friendly navigation and reduced-motion support"
+    ],
+    tech: "HTML · CSS · JavaScript",
+    learned: "Writing five pages by hand showed me why shared styles beat copied rules, and how CSS Grid and Flexbox remove most width guesswork. I also learned that accessibility is mostly a set of decisions made early — headings, labels, focus states — rather than something added at the end."
   },
-  third: {
-    title: "[PLACEHOLDER: Project name]",
-    summary: "[PLACEHOLDER: 3–4 sentences about the problem this project solves, what you built, and how someone uses it.]",
-    learned: "[PLACEHOLDER: what did this project teach you?]"
+  qr: {
+    kicker: "Backend development",
+    title: "QR Content Extractor",
+    summary: "A web application that reads QR codes and barcodes from an image, works out what kind of content they hold, and offers the action that fits: open the link, copy the text, download the file or save the contact.",
+    why: "It started as a command-line tool. Checking a code meant opening a terminal, so the obvious next step was a browser interface that anyone could use without installing Python.",
+    features: [
+      "Scan a code with the camera or upload an image",
+      "Decode QR Code, Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E and ITF",
+      "Detect links, text, email, phone, SMS, Wi-Fi, location and vCard contacts",
+      "Offer the matching action: open a link, copy text, download a file or save contact details",
+      "The original command-line tool is still included"
+    ],
+    tech: "Python · FastAPI · HTML · CSS · JavaScript",
+    learned: "Moving code from a terminal to a browser forced me to separate the decoding logic from the interface, which made both easier to test. I also learned how much of backend work is really input handling: file types, empty results, unreadable images and content that matches nothing expected."
   }
 };
 
@@ -36,8 +65,12 @@ const projectDetails = {
 // querySelector returns the first match, or null when nothing matches.
 const projectGrid = document.querySelector("#project-grid");
 const dialog = document.querySelector("#project-dialog");
+const dialogKicker = document.querySelector("#dialog-kicker");
 const dialogTitle = document.querySelector("#dialog-title");
 const dialogSummary = document.querySelector("#dialog-summary");
+const dialogWhy = document.querySelector("#dialog-why");
+const dialogFeatures = document.querySelector("#dialog-features");
+const dialogTech = document.querySelector("#dialog-tech");
 const dialogLearned = document.querySelector("#dialog-learned");
 const dialogClose = document.querySelector(".dialog-close");
 
@@ -57,9 +90,21 @@ function openProjectDialog(projectId, trigger) {
 
   // textContent treats the strings as plain text. innerHTML would parse them
   // as markup, so a stray "<" in your notes could break the page.
+  dialogKicker.textContent = details.kicker;
   dialogTitle.textContent = details.title;
   dialogSummary.textContent = details.summary;
+  dialogWhy.textContent = details.why;
+  dialogTech.textContent = details.tech;
   dialogLearned.textContent = details.learned;
+
+  // The feature list is rebuilt each time, so the previous project's items
+  // do not linger. replaceChildren() empties the <ul> in one call.
+  dialogFeatures.replaceChildren();
+  details.features.forEach(function (feature) {
+    const item = document.createElement("li");
+    item.textContent = feature;
+    dialogFeatures.append(item);
+  });
 
   lastTrigger = trigger;
   dialog.showModal(); // modal: the page behind is inert, Escape works
@@ -83,7 +128,18 @@ function restoreFocus() {
 /* --- 5. Wire it up ------------------------------------------------------ */
 // If this file is ever loaded on a page without the markup, stop with a
 // warning instead of throwing "cannot read properties of null".
-if (projectGrid && dialog && dialogTitle && dialogSummary && dialogLearned && dialogClose) {
+if (
+  projectGrid &&
+  dialog &&
+  dialogKicker &&
+  dialogTitle &&
+  dialogSummary &&
+  dialogWhy &&
+  dialogFeatures &&
+  dialogTech &&
+  dialogLearned &&
+  dialogClose
+) {
   // ONE listener for all three buttons (and any you add later). A click on a
   // button bubbles up to the grid, so the grid hears every button's clicks.
   projectGrid.addEventListener("click", function (event) {

@@ -11,15 +11,26 @@
 // and a descriptive proficiency label. Soft skills have no proficiency,
 // because they are not rated on the same scale.
 // PLACEHOLDER DATA: edit the names, categories and labels below.
+
 const skills = [
+  // Languages & Technologies
   { name: "Python", category: "Languages & Technologies", proficiency: "Proficient" },
   { name: "HTML", category: "Languages & Technologies", proficiency: "Intermediate" },
   { name: "CSS", category: "Languages & Technologies", proficiency: "Developing" },
   { name: "JavaScript", category: "Languages & Technologies", proficiency: "Developing" },
+  { name: "FastAPI", category: "Languages & Technologies", proficiency: "Intermediate" },
+  { name: "Django", category: "Languages & Technologies", proficiency: "Developing" },
+  { name: "Django REST Framework", category: "Languages & Technologies", proficiency: "Developing" },
+  { name: "SQLite", category: "Languages & Technologies", proficiency: "Beginner" },
+
+  // Tools
   { name: "Git & GitHub", category: "Tools", proficiency: "Intermediate" },
   { name: "VS Code", category: "Tools", proficiency: "Proficient" },
-  { name: "Figma", category: "Tools", proficiency: "Familiar" },
+  { name: "Postman", category: "Tools", proficiency: "Beginner" },
+  { name: "Figma", category: "Tools", proficiency: "Beginner" },
   { name: "Chrome DevTools", category: "Tools", proficiency: "Familiar" },
+
+  // Soft Skills
   { name: "Problem Solving", category: "Soft Skills" },
   { name: "Communication", category: "Soft Skills" },
   { name: "Adaptability", category: "Soft Skills" },
