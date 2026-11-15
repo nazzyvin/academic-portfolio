@@ -2215,6 +2215,23 @@ code {
   }
 }
 
+/* Large displays: widen the shared frame in measured steps so the full-width
+   sections stay balanced while text keeps its existing readable line limits. */
+@media (min-width: 1440px) {
+  :root {
+    --max-width: 1440px;
+    --gutter: 2.5rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --max-width: 1600px;
+    --gutter: 3rem;
+  }
+
+
+}
 /* Respect the visitor's operating system setting for less motion. */
 @media (prefers-reduced-motion: reduce) {
   html {
