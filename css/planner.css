@@ -248,3 +248,6 @@
   color: #6b3f05;
   font-size: 0.9rem;
 }
+
+:root[data-theme="dark"] .planner-noscript { color: var(--gold); }
+:root[data-theme="dark"] .task-delete:hover { border-color: #b96d67; background: #3b292b; color: #ffd9d4; }
