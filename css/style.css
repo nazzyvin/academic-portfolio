@@ -1,7 +1,4 @@
 /* ==========================================================================
-   Academic Portfolio — shared stylesheet
-   COS 106 · Stage 1
-
    Mobile-first: the base rules below style the phone layout, and each
    @media (min-width: ...) block adds the wider layouts on top.
 
